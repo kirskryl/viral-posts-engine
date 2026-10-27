@@ -1,8 +1,10 @@
 # Viral Posts Engine
 
-Скилл для Cursor / Claude: вирусные текстовые посты для Telegram (анонс эфира, саммари после эфира, обычный пост).
+Скилл для Codex / Cursor / Claude: вирусные текстовые посты для Telegram (анонс эфира, саммари, обычный пост).
 
-Методология адаптирована из разбора вирусных Reels под текст: первая строка, ритм абзацев, конкретика.
+Ниша — **обязательный параметр**: спрашивает нишу и аудиторию, не фиксируется на одной тематике.
+
+Парный скилл для видео: [viral-reels-engine](https://github.com/kirskryl/viral-reels-engine). Раздавайте вместе.
 
 ## Триггеры
 
@@ -10,26 +12,35 @@
 
 Только по явной команде (`disable-model-invocation: true`). Не автотриггерится на «напиши пост».
 
-Ниши по умолчанию: отношения, психология, здоровье, эзотерика.
-
 ## Установка
+
+### Codex
+
+```bash
+git clone https://github.com/kirskryl/viral-posts-engine.git ~/.codex/skills/viral-posts-engine
+# рекомендуется вместе:
+git clone https://github.com/kirskryl/viral-reels-engine.git ~/.codex/skills/viral-reels-engine
+```
+
+В `~/.codex/config.toml`:
+
+```toml
+[features]
+skills = true
+```
+
+### Cursor / Claude
 
 ```bash
 git clone https://github.com/kirskryl/viral-posts-engine.git ~/.cursor/skills/viral-posts-engine
-
-# опционально — зеркало для Claude Code:
 ln -sfn ~/.cursor/skills/viral-posts-engine ~/.claude/skills/viral-posts-engine
 ```
-
-Файлы:
-- [`SKILL.md`](SKILL.md) — протокол, 8 типов постов, чеклист
-- [`reference/announcements.md`](reference/announcements.md) — анонс эфира
-- [`reference/summaries.md`](reference/summaries.md) — саммари после эфира
-- [`reference/hooks-bank.md`](reference/hooks-bank.md) — банк хуков
 
 ## Обновление
 
 ```bash
+git -C ~/.codex/skills/viral-posts-engine pull
+# или
 git -C ~/.cursor/skills/viral-posts-engine pull
 ```
 
